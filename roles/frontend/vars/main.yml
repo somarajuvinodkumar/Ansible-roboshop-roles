@@ -1,1 +1,4 @@
 CATALOGUE_HOST: catalogue.somaraju.online
+CART_HOST: cart.somaraju.online
+USER_HOST: user.somaraju.online
+SHIPPING_HOST: shipping.somaraju.online
