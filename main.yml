@@ -1,8 +1,6 @@
 ---
-- name: "configure {{ component }}"
-  hosts: mongodb
+- name: configure {{ component }}
+  hosts: "{{ component }}"
   become: true
-
-  tasks:
-    - name: include component task
-      include_tasks: "{{ component }}.yml"
+  roles: 
+  - "{{ component }}"
