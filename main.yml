@@ -1,7 +1,7 @@
 ---
 - name: "configure {{ component }}"
-  hosts: all
-  become: yes
+  hosts: mongodb
+  become: true
 
   tasks:
     - name: include component task
