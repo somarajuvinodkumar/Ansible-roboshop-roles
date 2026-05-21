@@ -21,15 +21,18 @@
 - name: check products loaded or not
   ansible.builtin.command: mongosh --host mongodb.somaraju.online --eval 'db.getMongo().getDBNames().indexOf("catalogue")'
   register: catalogue_output
+  ignore_errors: true
   
 - name: print catalogue output
   ansible.builtin.debug:
     msg: "{{ catalogue_output }}"
+  ignore_errors: true
  
 
 - name: load products
   ansible.builtin.shell: mongosh --host mongodb.somaraju.online < /app/db/master-data.js
   when: catalogue_output.stdout | int < 0
+  ignore_errors: true
   
 
 - name: systemd setup
@@ -41,6 +44,6 @@
   tags: 
   - deployment
   include_role:
-  import_role:
+  #import_role:
     name: common
-    tasks_from: deployment      
+    tasks_from: deployment
